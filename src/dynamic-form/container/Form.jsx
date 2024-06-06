@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import FormDynamic from "../presentation/FormDynamic";
 import { checkBox, typeConfig } from "../description/form";
 /* eslint-disable */
@@ -43,13 +43,15 @@ const Form = ({ configArray, state, setState }) => {
                 ...prev,
                 [name]: {
                   value: [...filteredHobby],
-                  error: filteredHobby.length === 0 ? undefined : "",
+                  error:
+                    filteredHobby.length === 0
+                      ? "please fill this field properly"
+                      : "",
                 },
               }));
             }
           };
         }
-
         return (
           <Fragment key={index}>
             <FormDynamic state={state} handelChange={func} element={element} />

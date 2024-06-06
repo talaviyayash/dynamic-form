@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Form from "../container/Form";
 import { configArray } from "../description/form";
 
@@ -34,7 +34,7 @@ const ShowForm = () => {
   return (
     <div>
       <Form configArray={configArray} state={state} setState={setState} />
-      <button onClick={validAll}>Valid all</button>
+      <button onClick={() => validAll()}>Valid all</button>
     </div>
   );
 };
