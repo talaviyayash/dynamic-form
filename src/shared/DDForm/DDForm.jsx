@@ -1,16 +1,13 @@
 import React, { memo } from "react";
 import DDFormContainer from "../../dynamic-form/container/DDForm.container";
 import FormDynamic from "./DDFormSwitch";
-import { checkBox, typeConfig } from "../../dynamic-form/description/form";
+import { checkBox, typeConfig } from "../../description/form";
 
-const DDForm = ({ configArray, state, setState, error, setError }) => {
-  const { handelChangeType, handelChangeCheckBox } = DDFormContainer({
-    configArray,
-    state,
-    setState,
-    error,
-    setError,
-  });
+const DDForm = ({ configArray }) => {
+  const { error, handelChangeType, state, handelChangeCheckBox } =
+    DDFormContainer({
+      configArray,
+    });
   return (
     <div className="container">
       {configArray.map((element, index) => {

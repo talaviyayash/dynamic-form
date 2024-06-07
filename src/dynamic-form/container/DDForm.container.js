@@ -1,4 +1,16 @@
-const DDFormContainer = ({ state, setState, error, setError, configArray }) => {
+import { useState } from "react";
+
+const DDFormContainer = ({ configArray }) => {
+  const [state, setState] = useState({});
+  const [error, setError] = useState(() => {
+    return configArray.reduce((total, ele) => {
+      return {
+        ...total,
+        [ele.name]: undefined,
+      };
+    }, {});
+  });
+
   const handelChangeType = ({ e, patterns, name }) => {
     const value = e.target.value;
     const errorMsg = patterns?.filter(({ regex }) => {
@@ -35,7 +47,6 @@ const DDFormContainer = ({ state, setState, error, setError, configArray }) => {
   };
   return {
     state,
-    setState,
     handelChangeType,
     handelChangeCheckBox,
     error,

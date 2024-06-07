@@ -40,6 +40,12 @@ export const configArray = [
         htmlFor: "email",
       },
     },
+    patterns: [
+      {
+        regex: /^[0-9A-Za-z]{6,16}$/,
+        error: "Name only have 0-9, A-z or a-z characters",
+      },
+    ],
   },
   {
     name: "password",
