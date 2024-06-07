@@ -2,6 +2,7 @@ export const configArray = [
   {
     name: "name",
     type: "text",
+    required: true,
     attributes: {
       type: "text",
       name: "name",
@@ -18,14 +19,19 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^[0-9A-Za-z]{6,16}$/,
+        regex: /^[0-9A-Za-z._@]{6,16}$/,
         error: "Name only have 0-9, A-z or a-z characters",
+      },
+      {
+        regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/,
+        error: "Please enter valid email address",
       },
     ],
   },
   {
     name: "email",
     type: "text",
+    required: true,
     attributes: {
       type: "email",
       name: "email",
@@ -50,6 +56,7 @@ export const configArray = [
   {
     name: "password",
     type: "text",
+    required: false,
     attributes: {
       name: "password",
       type: "password",
@@ -68,6 +75,7 @@ export const configArray = [
   {
     name: "gender",
     type: "radio",
+    required: true,
     label: {
       innerText: "Gender :-",
       attributes: {},
@@ -106,6 +114,7 @@ export const configArray = [
   {
     name: "hobby",
     type: "checkbox",
+    required: true,
     children: [
       {
         attributes: {
@@ -160,6 +169,7 @@ export const configArray = [
   {
     name: "country",
     type: "select",
+    required: true,
     attributes: {
       className: "select-box",
       name: "country",
@@ -196,6 +206,7 @@ export const configArray = [
   {
     name: "state",
     type: "select",
+    required: true,
     attributes: {
       className: "select-box",
       name: "state",
@@ -232,6 +243,7 @@ export const configArray = [
   {
     name: "city",
     type: "select",
+    required: true,
     attributes: {
       className: "select-box",
       name: "city",
