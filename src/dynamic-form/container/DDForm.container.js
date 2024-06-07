@@ -43,4 +43,3 @@ const DDFormContainer = ({ state, setState, error, setError, configArray }) => {
 };
 
 export default DDFormContainer;
-Structuer;
