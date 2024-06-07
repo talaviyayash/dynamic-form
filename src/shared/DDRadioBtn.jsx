@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const RadioBtn = ({ element, state, handelChange }) => {
+const RadioBtn = ({ element, error, state, handelChange }) => {
   const { label = {}, children = [], name } = element;
 
   return (
@@ -17,10 +17,10 @@ const RadioBtn = ({ element, state, handelChange }) => {
             );
           })}
         </div>
-        <div className="error">{state?.[name]?.error}</div>
+        <div className="error">{error}</div>
       </div>
     </>
   );
 };
 
-export default RadioBtn;
+export default memo(RadioBtn);

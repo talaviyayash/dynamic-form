@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, memo } from "react";
 
-const SelectBox = ({ element, state, handelChange }) => {
+const SelectBox = ({ element, state, error, handelChange }) => {
   const {
     type = "",
     attributes = {},
@@ -16,7 +16,7 @@ const SelectBox = ({ element, state, handelChange }) => {
           <select
             type={type}
             {...attributes}
-            value={state?.[name]?.value}
+            value={state}
             onChange={handelChange}
           >
             {children.map(({ innerText = "", value }, index) => {
@@ -28,10 +28,10 @@ const SelectBox = ({ element, state, handelChange }) => {
             })}
           </select>
         </div>
-        <div className="error">{state?.[name]?.error}</div>
+        <div className="error">{error}</div>
       </div>
     </>
   );
 };
 
-export default SelectBox;
+export default memo(SelectBox);

@@ -1,10 +1,10 @@
-import React from "react";
-import CheckBox from "./AllForm/CheckBox";
-import RadioBtn from "./AllForm/RadioBtn";
-import InputText from "./AllForm/InputText";
-import SelectBox from "./AllForm/SelectBox";
+import React, { memo } from "react";
+import CheckBox from "../CheckBox";
+import RadioBtn from "../DDRadioBtn";
+import InputText from "../DDInputText";
+import SelectBox from "../DDSelectBox";
 
-const FormDynamic = ({ element, state, handelChange }) => {
+const FormDynamic = ({ element, state, handelChange, error }) => {
   const { type = "", attributes = {}, name } = element;
   switch (type) {
     case "text":
@@ -13,6 +13,7 @@ const FormDynamic = ({ element, state, handelChange }) => {
           element={element}
           state={state}
           handelChange={handelChange}
+          error={error}
         />
       );
     case "select":
@@ -21,15 +22,26 @@ const FormDynamic = ({ element, state, handelChange }) => {
           element={element}
           state={state}
           handelChange={handelChange}
+          error={error}
         />
       );
     case "checkbox":
       return (
-        <CheckBox element={element} state={state} handelChange={handelChange} />
+        <CheckBox
+          element={element}
+          state={state}
+          handelChange={handelChange}
+          error={error}
+        />
       );
     case "radio":
       return (
-        <RadioBtn element={element} state={state} handelChange={handelChange} />
+        <RadioBtn
+          element={element}
+          state={state}
+          handelChange={handelChange}
+          error={error}
+        />
       );
     case "button":
       return (
@@ -43,7 +55,7 @@ const FormDynamic = ({ element, state, handelChange }) => {
       break;
     default:
   }
-  return undefined;
+  return <></>;
 };
 
-export default FormDynamic;
+export default memo(FormDynamic);

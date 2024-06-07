@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, { memo } from "react";
 
-const CheckBox = ({ element, state, handelChange }) => {
+const CheckBox = ({ element, state, error, handelChange }) => {
   const { label = {}, children = [], name } = element;
   return (
     <>
@@ -20,10 +20,10 @@ const CheckBox = ({ element, state, handelChange }) => {
             );
           })}
         </div>
-        <div className="error">{state?.[name]?.error}</div>
+        <div className="error">{error}</div>
       </div>
     </>
   );
 };
 
-export default CheckBox;
+export default memo(CheckBox);
