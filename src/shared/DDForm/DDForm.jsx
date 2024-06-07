@@ -4,10 +4,9 @@ import FormDynamic from "./DDFormSwitch";
 import { checkBox, typeConfig } from "../../description/form";
 
 const DDForm = ({ configArray }) => {
-  const { error, handelChangeType, state, handelChangeCheckBox } =
-    DDFormContainer({
-      configArray,
-    });
+  const { handelChangeType, state, handelChangeCheckBox } = DDFormContainer({
+    configArray,
+  });
   return (
     <div className="container">
       {configArray.map((element, index) => {
@@ -21,10 +20,9 @@ const DDForm = ({ configArray }) => {
         return (
           <FormDynamic
             key={index}
-            value={state?.name?.value}
+            state={state?.[name]}
             handelChange={func}
             element={element}
-            error={error?.[name]}
           />
         );
       })}

@@ -4,14 +4,15 @@ import RadioBtn from "../DDRadioBtn";
 import InputText from "../DDInputText";
 import SelectBox from "../DDSelectBox";
 
-const FormDynamic = ({ element, state, handelChange, error }) => {
+const FormDynamic = ({ element, state, handelChange }) => {
+  const { value, error } = state;
   const { type = "", attributes = {}, name } = element;
   switch (type) {
     case "text":
       return (
         <InputText
           element={element}
-          state={state}
+          state={value}
           handelChange={handelChange}
           error={error}
         />
@@ -20,25 +21,20 @@ const FormDynamic = ({ element, state, handelChange, error }) => {
       return (
         <SelectBox
           element={element}
-          state={state}
+          state={value}
           handelChange={handelChange}
           error={error}
         />
       );
     case "checkbox":
       return (
-        <CheckBox
-          element={element}
-          state={state}
-          handelChange={handelChange}
-          error={error}
-        />
+        <CheckBox element={element} handelChange={handelChange} error={error} />
       );
     case "radio":
       return (
         <RadioBtn
           element={element}
-          state={state}
+          state={value}
           handelChange={handelChange}
           error={error}
         />
