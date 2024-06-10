@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import DDFormContainer from "../../dynamic-form/container/DDForm.container";
 import FormDynamic from "./DDFormSwitch";
 import { checkBox } from "../../description/form";
@@ -8,7 +8,6 @@ const DDForm = ({ configArray }) => {
     DDFormContainer({
       configArray,
     });
-
   return (
     <div className="container">
       {configArray.map((element, index) => {

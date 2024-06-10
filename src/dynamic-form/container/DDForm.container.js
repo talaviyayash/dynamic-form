@@ -13,6 +13,7 @@ const DDFormContainer = ({ configArray }) => {
       };
     }, {});
   });
+
   const handelChangeType = useCallback(({ e, patterns, name }) => {
     const value = e.target.value;
     const errorMsg =
@@ -31,30 +32,29 @@ const DDFormContainer = ({ configArray }) => {
   }, []);
 
   const handelChangeCheckBox = useCallback(({ e, name }) => {
-    if (e.target.checked) {
-      setState((prev) => ({
+    const isChecked = e.target.checked;
+    setState((prev) => {
+      let filteredArray = [];
+      if (!isChecked) {
+        filteredArray = prev?.[name]?.value?.filter(
+          (value) => !(e.target.value === value)
+        );
+      }
+      return {
         ...prev,
         [name]: {
           ...prev[name],
-          value: [...(prev?.[name]?.value || []), e.target.value],
-          error: "",
+          value: isChecked
+            ? [...(prev?.[name]?.value || []), e.target.value]
+            : [...filteredArray],
+          error: isChecked
+            ? ""
+            : filteredArray.length === 0
+            ? `Select at least one ${name}`
+            : "",
         },
-      }));
-    } else {
-      setState((prev) => {
-        const filteredArray = prev?.[name].value?.filter(
-          (value) => !(e.target.value === value)
-        );
-        return {
-          ...prev,
-          [name]: {
-            ...prev[name],
-            value: [...filteredArray],
-            error: filteredArray.length === 0 ? `Select atlas one ${name}` : "",
-          },
-        };
-      });
-    }
+      };
+    });
   }, []);
 
   const validateAllField = (e) => {
@@ -106,7 +106,6 @@ const DDFormContainer = ({ configArray }) => {
       },
       { ...state }
     );
-    console.log(isError);
     setState({ ...stateWithValidation });
   };
 
