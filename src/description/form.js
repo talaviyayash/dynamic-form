@@ -1,8 +1,15 @@
+import {
+  emailRegex,
+  emptyRegex,
+  nameRegex,
+  passwordRegex,
+} from "../dynamic-form/utils/regex";
+
 export const configArray = [
   {
     name: "name",
     type: "text",
-    // required: true,
+    required: true,
     attributes: {
       type: "text",
       name: "name",
@@ -17,11 +24,11 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
+        regex: emptyRegex,
         error: "Name can't be empty",
       },
       {
-        regex: /^[a-zA-Z ]{2,30}$/,
+        regex: nameRegex,
         error: "Please enter a valid name",
       },
     ],
@@ -44,12 +51,11 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
+        regex: emptyRegex,
         error: "Email can't be empty",
       },
       {
-        regex:
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        regex: emailRegex,
         error: "Please enter a valid email",
       },
     ],
@@ -72,11 +78,7 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
-        error: "Password can't be empty",
-      },
-      {
-        regex: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+        regex: passwordRegex,
         error: "Password is not valid",
       },
     ],
@@ -84,7 +86,7 @@ export const configArray = [
   {
     name: "gender",
     type: "radio",
-    required: true,
+    // required: true,
     label: {
       innerText: "Gender :-",
     },
@@ -116,7 +118,7 @@ export const configArray = [
     ],
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
+        regex: emptyRegex,
         error: "Please select gender.",
       },
     ],
@@ -198,7 +200,7 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
+        regex: emptyRegex,
         error: "Please select Country.",
       },
     ],
@@ -214,7 +216,7 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
+        regex: emptyRegex,
         error: "Please select one State.",
       },
     ],
@@ -249,7 +251,7 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^(?!\s*$).+/,
+        regex: emptyRegex,
         error: "Please select one City.",
       },
     ],

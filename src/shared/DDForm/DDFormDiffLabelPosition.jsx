@@ -1,17 +1,18 @@
-import React, { Fragment, memo } from "react";
-import DDFormContainer from "../../dynamic-form/container/DDForm.container";
-import FormDynamic from "./DDFormSwitch";
+import { Fragment, memo } from "react";
 import { checkBox } from "../../description/form";
 import DDLabel from "../DDLabel";
+import DDFormSwitch from "./DDFormSwitch";
 import DDError from "../DDError";
+import DDFormContainer from "../../dynamic-form/container/DDForm.container";
 
-const DDForm = ({ configArray }) => {
+const DDFormDiffLabelPosition = ({ configArray }) => {
   const {
     handelChangeType,
     state,
     validateAllField,
-    error,
+    errorFind,
     handelChangeCheckBox,
+    error,
   } = DDFormContainer({
     configArray,
   });
@@ -23,8 +24,8 @@ const DDForm = ({ configArray }) => {
           <Fragment key={index}>
             <div className="flex">
               <DDLabel label={label} required={required} />
-              <FormDynamic
-                value={state?.[name]}
+              <DDFormSwitch
+                state={state?.[name]}
                 handelChange={
                   type === checkBox ? handelChangeCheckBox : handelChangeType
                 }
@@ -35,9 +36,9 @@ const DDForm = ({ configArray }) => {
           </Fragment>
         );
       })}
-      <button onClick={validateAllField}>validate</button>
+      <button onClick={() => validateAllField()}>Validate</button>
     </div>
   );
 };
 
-export default memo(DDForm);
+export default memo(DDFormDiffLabelPosition);

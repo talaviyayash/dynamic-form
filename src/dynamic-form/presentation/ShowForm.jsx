@@ -1,16 +1,14 @@
-import React from "react";
-import { configArray } from "../../description/form";
+import { Fragment, memo } from "react";
 import DDForm from "../../shared/DDForm/DDForm";
+import { configArray } from "../../description/form";
 
 const ShowForm = () => {
   return (
-    <div>
-      <form>
-        <DDForm configArray={configArray} />
-      </form>
-      {/* <button onClick={() => validAll()}>Valid all</button> */}
-    </div>
+    <>
+      {/* <DDFormDiffLabelPosition configArray={configArray} /> */}
+      <DDForm configArray={configArray} />
+    </>
   );
 };
 
-export default ShowForm;
+export default memo(ShowForm);

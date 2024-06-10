@@ -1,21 +1,14 @@
 import React, { Fragment, memo } from "react";
 
-const SelectBox = ({ element, state, error, handelChange }) => {
-  const {
-    type = "",
-    attributes = {},
-    label,
-    children = [],
-    name,
-    patterns,
-  } = element;
+const SelectBox = ({ element, value, handelChange, required }) => {
+  const { type = "", attributes = {}, children = [], name, patterns } = element;
   return (
     <>
       <select
         type={type}
         {...attributes}
-        value={state}
-        onChange={(e) => handelChange({ e, patterns, name })}
+        value={value}
+        onChange={(e) => handelChange({ e, patterns, name, required })}
       >
         {children.map(({ innerText = "", value }, index) => {
           return (
