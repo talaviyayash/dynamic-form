@@ -1,7 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
 const DDLabel = ({ label }) => {
-  return <label {...label?.attributes}>{label?.innerText}</label>;
+  const { innerText, ...attribute } = label;
+  return <label {...attribute}>{innerText}</label>;
 };
 
-export default DDLabel;
+export default memo(DDLabel);

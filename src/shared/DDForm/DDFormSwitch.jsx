@@ -1,11 +1,11 @@
 import React, { memo } from "react";
-import CheckBox from "../CheckBox";
+import CheckBox from "../DDCheckBox";
 import RadioBtn from "../DDRadioBtn";
 import InputText from "../DDInputText";
 import SelectBox from "../DDSelectBox";
 
 const FormDynamic = ({ element, state, handelChange }) => {
-  const { value, error } = state;
+  const { value } = state;
   const { type = "", attributes = {}, name } = element;
   switch (type) {
     case "text":
@@ -14,7 +14,6 @@ const FormDynamic = ({ element, state, handelChange }) => {
           element={element}
           state={value}
           handelChange={handelChange}
-          error={error}
         />
       );
     case "select":
@@ -23,21 +22,13 @@ const FormDynamic = ({ element, state, handelChange }) => {
           element={element}
           state={value}
           handelChange={handelChange}
-          error={error}
         />
       );
     case "checkbox":
-      return (
-        <CheckBox element={element} handelChange={handelChange} error={error} />
-      );
+      return <CheckBox element={element} handelChange={handelChange} />;
     case "radio":
       return (
-        <RadioBtn
-          element={element}
-          state={value}
-          handelChange={handelChange}
-          error={error}
-        />
+        <RadioBtn element={element} state={value} handelChange={handelChange} />
       );
     case "button":
       return (

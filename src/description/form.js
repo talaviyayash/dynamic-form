@@ -12,10 +12,8 @@ export const configArray = [
     },
     label: {
       innerText: "Name :-",
-      attributes: {
-        className: "font",
-        htmlFor: "name",
-      },
+      className: "font",
+      htmlFor: "name",
     },
     patterns: [
       {
@@ -41,10 +39,8 @@ export const configArray = [
     },
     label: {
       innerText: "Email :-",
-      attributes: {
-        className: "font",
-        htmlFor: "email",
-      },
+      className: "font",
+      htmlFor: "email",
     },
     patterns: [
       {
@@ -71,10 +67,8 @@ export const configArray = [
     },
     label: {
       innerText: "Password :-",
-      attributes: {
-        className: "font",
-        htmlFor: "Password",
-      },
+      className: "font",
+      htmlFor: "password",
     },
     patterns: [
       {
@@ -93,7 +87,6 @@ export const configArray = [
     required: true,
     label: {
       innerText: "Gender :-",
-      attributes: {},
     },
     children: [
       {
@@ -104,10 +97,8 @@ export const configArray = [
         },
         label: {
           innerText: "Male",
-          attributes: {
-            className: "for-redio-check",
-            htmlFor: "male",
-          },
+          className: "for-redio-check",
+          htmlFor: "male",
         },
       },
       {
@@ -118,10 +109,8 @@ export const configArray = [
         },
         label: {
           innerText: "Female",
-          attributes: {
-            className: "for-redio-check",
-            htmlFor: "female",
-          },
+          className: "for-redio-check",
+          htmlFor: "female",
         },
       },
     ],
@@ -145,10 +134,8 @@ export const configArray = [
         },
         label: {
           innerText: "Reading",
-          attributes: {
-            className: "for-radio-check",
-            htmlFor: "Reading",
-          },
+          className: "for-radio-check",
+          htmlFor: "Reading",
         },
       },
       {
@@ -159,10 +146,8 @@ export const configArray = [
         },
         label: {
           innerText: "Traveling",
-          attributes: {
-            className: "for-radio-check",
-            htmlFor: "Traveling",
-          },
+          className: "for-radio-check",
+          htmlFor: "Traveling",
         },
       },
       {
@@ -173,18 +158,14 @@ export const configArray = [
         },
         label: {
           innerText: "Sports",
-          attributes: {
-            className: "for-radio-check",
-            htmlFor: "Sports",
-          },
+          className: "for-radio-check",
+          htmlFor: "Sports",
         },
       },
     ],
     label: {
       innerText: "Hobby :-",
-      attributes: {
-        className: "font",
-      },
+      className: "font",
     },
   },
   {
@@ -212,10 +193,8 @@ export const configArray = [
     ],
     label: {
       innerText: "Country :-",
-      attributes: {
-        className: "font select-box-text",
-        htmlFor: "country",
-      },
+      className: "font select-box-text",
+      htmlFor: "country",
     },
     patterns: [
       {
@@ -255,10 +234,8 @@ export const configArray = [
     ],
     label: {
       innerText: "State :-",
-      attributes: {
-        className: "font select-box-text",
-        htmlFor: "state",
-      },
+      className: "font select-box-text",
+      htmlFor: "state",
     },
   },
   {
@@ -292,10 +269,8 @@ export const configArray = [
     ],
     label: {
       innerText: "City :-",
-      attributes: {
-        className: "font select-box-text",
-        htmlFor: "city",
-      },
+      className: "font select-box-text",
+      htmlFor: "city",
     },
   },
 ];
