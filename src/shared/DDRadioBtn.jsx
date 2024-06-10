@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 const RadioBtn = ({ element, error, state, handelChange }) => {
-  const { label = {}, children = [], name } = element;
+  const { label = {}, children = [], name, patterns } = element;
 
   return (
     <>
@@ -11,7 +11,11 @@ const RadioBtn = ({ element, error, state, handelChange }) => {
           {children?.map(({ attributes = {}, label = {} }, index) => {
             return (
               <div key={index}>
-                <input type="radio" {...attributes} onChange={handelChange} />
+                <input
+                  type="radio"
+                  {...attributes}
+                  onChange={(e) => handelChange({ e, patterns, name })}
+                />
                 <label {...label?.attributes}>{label?.innerText}</label>
               </div>
             );

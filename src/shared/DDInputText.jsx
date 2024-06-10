@@ -1,13 +1,19 @@
 import React, { memo } from "react";
+import DDLabel from "./DDLabel";
+import DDError from "./DDError";
 
 const InputText = ({ element, error, state, handelChange }) => {
-  const { label = {}, name, attributes } = element;
+  const { label = {}, name, patterns, attributes } = element;
   return (
     <>
       <div className={name}>
-        <label {...label?.attributes}>{label?.innerText}</label>
-        <input {...attributes} value={state} onChange={handelChange} />
-        <div className="error">{error}</div>
+        <DDLabel label={label} />
+        <input
+          {...attributes}
+          value={state}
+          onChange={(e) => handelChange({ e, patterns, name })}
+        />
+        <DDError error={error} />
       </div>
     </>
   );

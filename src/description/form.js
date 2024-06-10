@@ -2,7 +2,7 @@ export const configArray = [
   {
     name: "name",
     type: "text",
-    required: true,
+    // required: true,
     attributes: {
       type: "text",
       name: "name",
@@ -19,12 +19,12 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^[0-9A-Za-z._@]{6,16}$/,
-        error: "Name only have 0-9, A-z or a-z characters",
+        regex: /^(?!\s*$).+/,
+        error: "Name can't be empty",
       },
       {
-        regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/,
-        error: "Please enter valid email address",
+        regex: /^[a-zA-Z ]{2,30}$/,
+        error: "Please enter a valid name",
       },
     ],
   },
@@ -48,8 +48,13 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^[0-9A-Za-z]{6,16}$/,
-        error: "Name only have 0-9, A-z or a-z characters",
+        regex: /^(?!\s*$).+/,
+        error: "Email can't be empty",
+      },
+      {
+        regex:
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        error: "Please enter a valid email",
       },
     ],
   },
@@ -71,6 +76,16 @@ export const configArray = [
         htmlFor: "Password",
       },
     },
+    patterns: [
+      {
+        regex: /^(?!\s*$).+/,
+        error: "Password can't be empty",
+      },
+      {
+        regex: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+        error: "Password is not valid",
+      },
+    ],
   },
   {
     name: "gender",
@@ -108,6 +123,12 @@ export const configArray = [
             htmlFor: "female",
           },
         },
+      },
+    ],
+    patterns: [
+      {
+        regex: /^(?!\s*$).+/,
+        error: "Please select gender.",
       },
     ],
   },
@@ -198,8 +219,8 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /[\S]/,
-        error: "Please select one option",
+        regex: /^(?!\s*$).+/,
+        error: "Please select Country.",
       },
     ],
   },
@@ -214,8 +235,8 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /[\S]/,
-        error: "Please select one option",
+        regex: /^(?!\s*$).+/,
+        error: "Please select one State.",
       },
     ],
     children: [
@@ -251,8 +272,8 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /[\S]/,
-        error: "Please select one option",
+        regex: /^(?!\s*$).+/,
+        error: "Please select one City.",
       },
     ],
     children: [

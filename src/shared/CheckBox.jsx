@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 const CheckBox = ({ element, state, error, handelChange }) => {
-  const { label = {}, children = [], name } = element;
+  const { label = {}, children = [], name, patterns } = element;
   return (
     <>
       <div className={name}>
@@ -12,7 +12,7 @@ const CheckBox = ({ element, state, error, handelChange }) => {
               <div key={index}>
                 <input
                   type="checkbox"
-                  onChange={handelChange}
+                  onChange={(e) => handelChange({ e, patterns, name })}
                   {...attributes}
                 />
                 <label {...label?.attributes}>{label?.innerText}</label>

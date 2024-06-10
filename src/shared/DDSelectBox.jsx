@@ -7,6 +7,7 @@ const SelectBox = ({ element, state, error, handelChange }) => {
     label = {},
     children = [],
     name,
+    patterns,
   } = element;
   return (
     <>
@@ -17,7 +18,7 @@ const SelectBox = ({ element, state, error, handelChange }) => {
             type={type}
             {...attributes}
             value={state}
-            onChange={handelChange}
+            onChange={(e) => handelChange({ e, patterns, name })}
           >
             {children.map(({ innerText = "", value }, index) => {
               return (
