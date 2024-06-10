@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import DDLabel from "./DDLabel";
 
-const RadioBtn = ({ element, error, state, handelChange }) => {
+const RadioBtn = ({ element, handelChange, required }) => {
   const { children = [], name, patterns } = element;
 
   return (
@@ -12,7 +12,7 @@ const RadioBtn = ({ element, error, state, handelChange }) => {
             <input
               type="radio"
               {...attributes}
-              onChange={(e) => handelChange({ e, patterns, name })}
+              onChange={(e) => handelChange({ e, patterns, name, required })}
             />
             <DDLabel label={label} />
           </div>
