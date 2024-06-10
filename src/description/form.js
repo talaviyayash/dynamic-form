@@ -19,12 +19,8 @@ export const configArray = [
     },
     patterns: [
       {
-        regex: /^[0-9A-Za-z._@]{6,16}$/,
+        regex: /^[0-9A-Za-z]{6,16}$/,
         error: "Name only have 0-9, A-z or a-z characters",
-      },
-      {
-        regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/,
-        error: "Please enter valid email address",
       },
     ],
   },

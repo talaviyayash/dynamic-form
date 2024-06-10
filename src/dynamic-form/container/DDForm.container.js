@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { checkBox } from "../../description/form";
 
 const DDFormContainer = ({ configArray }) => {
   const [state, setState] = useState(() => {
@@ -8,8 +9,6 @@ const DDFormContainer = ({ configArray }) => {
         [ele.name]: {
           value: "",
           error: "",
-          required: ele?.required,
-          patterns: ele.patterns ?? [],
         },
       };
     }, {});
@@ -55,25 +54,49 @@ const DDFormContainer = ({ configArray }) => {
     }
   };
 
-  // const validateAllField = () => {
-  //   const isError = Object.keys(state).forEach((val) => {
-  //     console.log(state[val]);
-  //     const { patterns, value, required, error } = state[val];
-  //     if (!required && error) {
-  //       return false;
-  //     }
-  //     const errorMsg = patterns?.filter(({ regex }) => {
-  //       const isValid = value.match(regex);
-  //       return !isValid;
-  //     });
-  //     return val;
-  //   });
-  // };
+  const validateAllField = (e) => {
+    let isError = false;
+    e?.preventDefault();
+    const error = configArray.reduce(
+      (total, val) => {
+        const { name, patterns, type } = val;
+        const { value } = state[name];
+        if (type === checkBox) {
+          const lengthOfValue = value?.length === 0;
+          isError = isError ? isError : lengthOfValue ? true : false;
+          return {
+            ...total,
+            [name]: {
+              value,
+              error: value?.length === 0 ? "please select filed" : "",
+            },
+          };
+        } else {
+          const errorMsg =
+            patterns?.filter(({ regex }) => {
+              const isValid = value.match(regex);
+              return !isValid;
+            }) ?? [];
+          return {
+            ...total,
+            [name]: {
+              value,
+              error: errorMsg[0]?.error ? errorMsg[0]?.error : "",
+            },
+          };
+        }
+        return;
+      },
+      { ...state }
+    );
+    console.log(error);
+  };
   // validateAllField();
   return {
     state,
     handelChangeType,
     handelChangeCheckBox,
+    validateAllField,
   };
 };
 

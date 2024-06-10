@@ -4,7 +4,7 @@ import FormDynamic from "./DDFormSwitch";
 import { checkBox, typeConfig } from "../../description/form";
 
 const DDForm = ({ configArray }) => {
-  const { handelChangeType, state, handelChangeCheckBox } = DDFormContainer({
+  const { handelChangeType, state,validateAllField, handelChangeCheckBox } = DDFormContainer({
     configArray,
   });
   return (
@@ -26,6 +26,7 @@ const DDForm = ({ configArray }) => {
           />
         );
       })}
+      <button onClick={validateAllField}>validate</button>
     </div>
   );
 };
