@@ -1,5 +1,5 @@
 import React from "react";
-import { emptyString } from "../description/userForm.description";
+import { emptyString } from "../description/globel.description";
 
 const DDTextArea = ({ element, value, handelChange }) => {
   const { name, patterns, required, attributes } = element;

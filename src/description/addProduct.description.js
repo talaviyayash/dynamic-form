@@ -164,6 +164,8 @@ export const addProductArray = [
       name: "notes",
       id: "notes",
       className: "input-text",
+      rows: 3,
+      cols: 36,
     },
     label: {
       innerText: "Notes",
