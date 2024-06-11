@@ -3,6 +3,7 @@ import CheckBox from "../DDCheckBox";
 import RadioBtn from "../DDRadioBtn";
 import InputText from "../DDInputText";
 import SelectBox from "../DDSelectBox";
+import DDTextArea from "../DDTextArea";
 import { emptyString } from "../../description/globel.description";
 
 const FormDynamic = ({ element, value, handelChange }) => {
@@ -45,7 +46,7 @@ const FormDynamic = ({ element, value, handelChange }) => {
       );
     case "textarea":
       return (
-        <RadioBtn
+        <DDTextArea
           element={element}
           required={required}
           value={value}
