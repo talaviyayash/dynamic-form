@@ -1,7 +1,14 @@
 import React, { Fragment, memo } from "react";
+import { emptyString } from "../description/globel.description";
 
 const SelectBox = ({ element, value, handelChange, required }) => {
-  const { type = "", attributes = {}, children = [], name, patterns } = element;
+  const {
+    type = emptyString,
+    attributes = {},
+    children = [],
+    name,
+    patterns = [],
+  } = element;
   return (
     <>
       <select
@@ -10,7 +17,7 @@ const SelectBox = ({ element, value, handelChange, required }) => {
         value={value}
         onChange={(e) => handelChange({ e, patterns, name, required })}
       >
-        {children.map(({ innerText = "", value }, index) => {
+        {children.map(({ innerText = emptyString, value }, index) => {
           return (
             <option key={index} value={value}>
               {innerText}

@@ -3,19 +3,15 @@ import { checkBox } from "../../description/form";
 import DDLabel from "../DDLabel";
 import DDFormSwitch from "./DDFormSwitch";
 import DDError from "../DDError";
-import DDFormContainer from "../../dynamic-form/container/DDForm.container";
 
-const DDFormDiffLabelPosition = ({ configArray }) => {
-  const {
-    handelChangeType,
-    state,
-    validateAllField,
-    errorFind,
-    handelChangeCheckBox,
-    error,
-  } = DDFormContainer({
-    configArray,
-  });
+const DDFormDiffLabelPosition = ({
+  configArray,
+  handelChangeType,
+  state,
+  validateAllField,
+  error,
+  handelChangeCheckBox,
+}) => {
   return (
     <div className="container">
       {configArray.map((element, index) => {

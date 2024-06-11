@@ -1,11 +1,11 @@
 import React, { memo } from "react";
 
-const DDLabel = ({ label, required }) => {
+const DDLabel = ({ label, isRequired }) => {
   const { innerText, ...attribute } = label;
   return (
     <label {...attribute}>
       {innerText}
-      {required && "*"}
+      <span className="required">{isRequired && "*"}</span>
     </label>
   );
 };

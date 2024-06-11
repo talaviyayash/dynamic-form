@@ -1,10 +1,14 @@
 import "./App.css";
-import ShowForm from "./dynamic-form/presentation/ShowForm";
+import AddProductForm from "./presentation/AddProductForm";
+import UserForm from "./presentation/UserForm";
 
 function App() {
   return (
     <>
-      <ShowForm />
+      <div>
+        {/* <UserForm /> */}
+        <AddProductForm />
+      </div>
     </>
   );
 }
