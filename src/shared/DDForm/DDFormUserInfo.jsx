@@ -6,33 +6,36 @@ import DDError from "../DDError";
 
 const DDFormUserInfo = ({
   configArray,
+  handelChangeCheckBox,
   handelChangeType,
   state,
-  validateAllField,
   error,
-  handelChangeCheckBox,
 }) => {
   return (
     <>
-      {configArray.map((element, index) => {
-        const { type, name, label, required } = element;
-        console.log("required", required);
-        return (
-          <Fragment key={index}>
-            <div className={`${name + "-form"} wrap-input`}>
-              <DDLabel label={label} required={required} />
-              <DDFormSwitch
-                value={state?.[name]}
-                handelChange={
-                  type === checkBox ? handelChangeCheckBox : handelChangeType
-                }
-                element={element}
-              />
-              <DDError error={error?.[name]} />
-            </div>
-          </Fragment>
-        );
-      })}
+      <div className="DDFcontainer" style={{ display: "grid" }}>
+        {configArray.map((element, index) => {
+          const { type, name, label, required, wrapElementStyle } = element;
+          return (
+            <Fragment key={index}>
+              <div
+                style={wrapElementStyle}
+                className={`${name + "-form DDFWrappingInput"} `}
+              >
+                <DDLabel label={label} required={required} />
+                <DDFormSwitch
+                  value={state?.[name]}
+                  handelChange={
+                    type === checkBox ? handelChangeCheckBox : handelChangeType
+                  }
+                  element={element}
+                />
+                <DDError error={error?.[name]} />
+              </div>
+            </Fragment>
+          );
+        })}
+      </div>
     </>
   );
 };

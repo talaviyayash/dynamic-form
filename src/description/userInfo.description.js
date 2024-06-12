@@ -2,35 +2,37 @@ import {
   ageRegex,
   emailRegex,
   mobileNumberRegex,
-  // emptyRegex,
   nameRegex,
-  // passwordRegex,
 } from "../utils/regex";
 
-export const userForm = [
+export const userInfoForm = [
   {
     name: "fname",
     type: "text",
     required: {
       isRequired: true,
-      defaultMsg: "Please enter Fname",
+      defaultMsg: "Please enter First Name.",
     },
     attributes: {
       type: "text",
       name: "fname",
       id: "fname",
       className: "input-text",
-      placeholder: "Enter Fname",
+      placeholder: "First Name",
+    },
+    wrapElementStyle: {
+      gridColumn: "2/6",
     },
     label: {
-      innerText: "Fname",
+      innerText: "First Name",
       className: "font",
       htmlFor: "fname",
     },
     patterns: [
       {
         regex: nameRegex,
-        error: "Please enter a valid Fname.",
+        error:
+          "First Name only contain alphabets and spaces and minimum length is 2.",
       },
     ],
   },
@@ -39,24 +41,28 @@ export const userForm = [
     type: "text",
     required: {
       isRequired: true,
-      defaultMsg: "Please enter Lname.",
+      defaultMsg: "Please enter Last Name.",
     },
     attributes: {
       type: "text",
       name: "lname",
       id: "lname",
       className: "input-text",
-      placeholder: "Enter Lname",
+      placeholder: "Last Name",
+    },
+    wrapElementStyle: {
+      gridColumn: "7/11",
     },
     label: {
-      innerText: "Lname",
+      innerText: "Last Name",
       className: "font",
       htmlFor: "lname",
     },
     patterns: [
       {
         regex: nameRegex,
-        error: "Please enter a valid Lname.",
+        error:
+          "Last Name only contain alphabets and spaces and minimum length is 2.",
       },
     ],
   },
@@ -72,7 +78,10 @@ export const userForm = [
       name: "email",
       id: "email",
       className: "input-text",
-      placeholder: "Enter Email",
+      placeholder: "Email",
+    },
+    wrapElementStyle: {
+      gridColumn: "2/6",
     },
     label: {
       innerText: "Email",
@@ -82,7 +91,7 @@ export const userForm = [
     patterns: [
       {
         regex: emailRegex,
-        error: "Please enter a valid Email Address.",
+        error: "Email only contain alphabets , number , @ and (.) .",
       },
     ],
   },
@@ -91,14 +100,17 @@ export const userForm = [
     type: "text",
     required: {
       isRequired: true,
-      defaultMsg: "Please enter valid Number.",
+      defaultMsg: "Please enter valid Mobile No.",
     },
     attributes: {
       type: "text",
       name: "mobileNo",
       id: "mobileNo",
       className: "input-text",
-      placeholder: "Enter Mobile No.",
+      placeholder: " Mobile No.",
+    },
+    wrapElementStyle: {
+      gridColumn: "7/11",
     },
     label: {
       innerText: "Mobile No.",
@@ -108,7 +120,7 @@ export const userForm = [
     patterns: [
       {
         regex: mobileNumberRegex,
-        error: "Please enter a valid Mobile No.",
+        error: "Mobile No only contain numbers and length of number is 10.",
       },
     ],
   },
@@ -124,7 +136,10 @@ export const userForm = [
       name: "age",
       id: "age",
       className: "input-text",
-      placeholder: "Enter your Age.",
+      placeholder: "Your Age.",
+    },
+    wrapElementStyle: {
+      gridColumn: "2/6",
     },
     label: {
       innerText: "Age",
@@ -134,8 +149,31 @@ export const userForm = [
     patterns: [
       {
         regex: ageRegex,
-        error: "Please enter a valid Age.",
+        error: "Age only contain numbers between 0 to 999.",
       },
     ],
+  },
+  {
+    name: "dob",
+    type: "text",
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter valid Age date.",
+    },
+    attributes: {
+      type: "date",
+      name: "dob",
+      id: "dob",
+      className: "input-text",
+      max: new Date().toISOString().slice(0, 10),
+    },
+    wrapElementStyle: {
+      gridColumn: "7/11",
+    },
+    label: {
+      innerText: "DOB",
+      className: "font",
+      htmlFor: "dob",
+    },
   },
 ];

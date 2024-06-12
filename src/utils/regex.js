@@ -1,5 +1,6 @@
 export const emptyRegex = /^(?!\s*$).+/;
 export const nameRegex = /^[a-zA-Z ]{2,30}$/;
+
 export const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -10,4 +11,4 @@ export const onlyNumberRegex = /^[0-9]*$/;
 
 export const mobileNumberRegex = /^\d{10}$/;
 
-export const ageRegex = /^\S[0-9]{0,2}$/;
+export const ageRegex = /^\d{0,3}$/;

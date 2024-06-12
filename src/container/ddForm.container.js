@@ -1,38 +1,54 @@
 import { useCallback, useState } from "react";
 import { emptyString } from "../description/global.description";
 
-const DDFormContainer = ({ configArray }) => {
+const DDFormContainer = ({ configArray, allValidationFunction }) => {
   const [state, setState] = useState({});
 
   const [error, setError] = useState({});
 
-  const singleErrorFind = useCallback(({ value, patterns, required, name }) => {
-    const lengthOfValueIsZero = value.length === 0;
-    const { isRequired, defaultMsg } = required;
-    const { error: errorMsg } =
-      patterns?.find(({ regex }) => {
-        const isValid = value.match(regex);
-        return !isValid;
-      }) ?? {};
-    const isAnyErrorMsg = isRequired
-      ? errorMsg ||
-        (lengthOfValueIsZero
-          ? defaultMsg || `Please fill ${name} field properly`
-          : emptyString)
-      : lengthOfValueIsZero
-      ? emptyString
-      : errorMsg || emptyString;
-    setError((prev) => ({
-      ...prev,
-      [name]: isAnyErrorMsg,
-    }));
-    return Boolean(isAnyErrorMsg);
-  }, []);
+  const singleErrorFind = useCallback(
+    ({ value, patterns, required, name }) => {
+      const lengthOfValueIsZero = value.length === 0;
+      const { isRequired, defaultMsg } = required;
+
+      let { error: errorMsg } =
+        patterns?.find(({ regex }) => {
+          const isValid = value.match(regex);
+          return !isValid;
+        }) ?? {};
+
+      const customValidationFunction = allValidationFunction?.[name];
+
+      if (customValidationFunction && !errorMsg) {
+        errorMsg = customValidationFunction();
+      }
+
+      const isAnyErrorMsg = isRequired
+        ? errorMsg ||
+          (lengthOfValueIsZero
+            ? defaultMsg || `Please fill ${name} field properly`
+            : emptyString)
+        : lengthOfValueIsZero
+        ? emptyString
+        : errorMsg || emptyString;
+
+      setError((prev) => ({
+        ...prev,
+        [name]: isAnyErrorMsg,
+      }));
+
+      return Boolean(isAnyErrorMsg);
+    },
+    [allValidationFunction]
+  );
 
   const errorFind = ({ name }) => {
     const ele = configArray.find((val) => val.name === name);
+
     const { patterns, required } = ele;
+
     const value = state[name] ?? emptyString;
+
     const isErrorFind = singleErrorFind({
       value: value,
       patterns,
@@ -49,8 +65,13 @@ const DDFormContainer = ({ configArray }) => {
         ...prev,
         [name]: value,
       }));
-      console.log("value", value);
-      singleErrorFind({ value: value.trim(), patterns, required, name });
+
+      singleErrorFind({
+        value: value.trim(),
+        patterns,
+        required,
+        name,
+      });
     },
     [singleErrorFind]
   );
@@ -59,6 +80,7 @@ const DDFormContainer = ({ configArray }) => {
     const isChecked = e.target.checked;
     const value = e.target.value;
     const { isRequired, defaultMsg } = required;
+
     setState((prev) => {
       let filteredArray = prev?.[name] ?? [];
       if (!isChecked) {
@@ -66,6 +88,7 @@ const DDFormContainer = ({ configArray }) => {
       } else {
         filteredArray.push(value);
       }
+
       setError((prev) => ({
         ...prev,
         [name]: isChecked
@@ -74,6 +97,7 @@ const DDFormContainer = ({ configArray }) => {
           ? isRequired && (defaultMsg || `Please fill ${name} field properly`)
           : emptyString,
       }));
+
       return {
         ...prev,
         [name]: [...filteredArray],
@@ -82,20 +106,24 @@ const DDFormContainer = ({ configArray }) => {
   }, []);
 
   const validateAllField = (e) => {
-    let isError = false;
     e?.preventDefault();
+    let isError = false;
+
     configArray.forEach((val) => {
-      const { name, patterns, type, required } = val;
+      const { name, patterns, required } = val;
+
       const value = state[name] ?? emptyString;
+
       const errorFound = singleErrorFind({
         value: value,
         patterns,
         required,
         name,
       });
+
       isError = isError || errorFound;
     }, {});
-    return isError;
+    return !isError;
   };
 
   return {

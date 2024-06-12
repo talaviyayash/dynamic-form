@@ -1,35 +1,42 @@
 import React, { memo } from "react";
 import DDFormContainer from "../container/ddForm.container";
-import { userForm } from "../description/userInfo.description";
+import UserInfoContainer from "../container/userInfo.container";
+import { userInfoForm } from "../description/userInfo.description";
 import DDFormUserInfo from "../shared/DDForm/DDFormUserInfo";
 const UserInfo = () => {
+  const allValidationFunction = UserInfoContainer();
   const {
     handelChangeType,
     state,
     validateAllField,
     error,
-    // errorFind,
     handelChangeCheckBox,
   } = DDFormContainer({
-    configArray: userForm,
+    configArray: userInfoForm,
+    allValidationFunction,
   });
+
   return (
     <>
-      <form>
-        <div className="container" style={{ display: "grid" }}>
-          {/* <div className="wrap"> */}
-          <DDFormUserInfo
-            handelChangeType={handelChangeType}
-            configArray={userForm}
-            state={state}
-            error={error}
-            handelChangeCheckBox={handelChangeCheckBox}
-          />
-          {/* </div> */}
+      <div className="wrapper">
+        <div className="style-form">
+          <form>
+            <h1 className="center">User Info Form</h1>
+            <DDFormUserInfo
+              handelChangeType={handelChangeType}
+              configArray={userInfoForm}
+              state={state}
+              error={error}
+              handelChangeCheckBox={handelChangeCheckBox}
+            />
+            <div className="submit">
+              <button onClick={validateAllField}>submit</button>
+            </div>
+          </form>
         </div>
-      </form>
-      <button onClick={validateAllField}>submit</button>
+      </div>
     </>
   );
 };
+
 export default memo(UserInfo);

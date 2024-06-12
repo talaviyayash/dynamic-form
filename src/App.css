@@ -1,42 +1,19 @@
 * {
   box-sizing: border-box;
+  word-spacing: 3px;
+  letter-spacing: 1.9px;
 }
-.container {
+.DDFcontainer {
   display: gird;
-  grid-template-columns: repeat(8, 1fr);
-  height: 40vh;
-  margin: 50px;
-  border: 2px solid black;
+  grid-template-columns: repeat(11, 1fr);
   justify-content: center;
   align-items: center;
-}
-
-.wrap-input {
-  display: flex;
-  flex-direction: column;
-  padding-left: 80px;
 }
 
 .grid {
   display: grid;
 }
 
-.fname-form {
-  grid-column: 1/4;
-}
-
-.lname-form {
-  grid-column: 5/8;
-}
-.email-form {
-  grid-column: 1/4;
-}
-.mobileNo-form {
-  grid-column: 1/4;
-}
-.age-form {
-  grid-column: 5/8;
-}
 .error {
   width: 100%;
   color: red;
@@ -51,9 +28,122 @@ label {
 .input-text {
   height: 30px;
   font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 40px;
 }
 
 .required {
   font-size: 15px;
   color: red;
+}
+
+.submit {
+  grid-column: 4/6;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.center {
+  grid-column: 1/9;
+  text-align: center;
+}
+
+.dob-form {
+  grid-column: 1/5;
+}
+
+.input-text {
+  border-radius: 8px 21px;
+  padding: 7px 20px;
+  font-size: 15px;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: white;
+}
+.style-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-top: 150px;
+  border-radius: 20px;
+  background-color: #e1dfdf;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.DDFWrappingInput {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 90px;
+}
+
+.center {
+  text-align: center;
+}
+
+.submit button {
+  border: 0;
+  color: white;
+  background-color: black;
+  font-size: 15px;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 870px) {
+  .DDFcontainer {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+  .DDFWrappingInput {
+    width: 60%;
+  }
+  .style-form {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .DDFWrappingInput {
+    width: 60%;
+    height: 80px;
+  }
+  .style-form {
+    width: 400px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+  .error {
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .DDFWrappingInput {
+    width: 60%;
+    height: 80px;
+  }
+  .style-form {
+    width: 300px;
+  }
+  .error {
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    height: 20px;
+  }
+  h1 {
+    font-size: 20px;
+  }
 }
