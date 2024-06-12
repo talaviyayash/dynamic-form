@@ -6,19 +6,6 @@ const DDFormContainer = ({ configArray }) => {
 
   const [error, setError] = useState({});
 
-  const errorFind = ({ name }) => {
-    const ele = configArray.find((val) => val.name === name);
-    const { patterns, required } = ele;
-    const value = state[name] ?? emptyString;
-    const isErrorFind = singleErrorFind({
-      value: value,
-      patterns,
-      required,
-      name,
-    });
-    return isErrorFind;
-  };
-
   const singleErrorFind = useCallback(({ value, patterns, required, name }) => {
     const lengthOfValueIsZero = value.length === 0;
     const { isRequired, defaultMsg } = required;
@@ -41,6 +28,19 @@ const DDFormContainer = ({ configArray }) => {
     }));
     return Boolean(isAnyErrorMsg);
   }, []);
+
+  const errorFind = ({ name }) => {
+    const ele = configArray.find((val) => val.name === name);
+    const { patterns, required } = ele;
+    const value = state[name] ?? emptyString;
+    const isErrorFind = singleErrorFind({
+      value: value,
+      patterns,
+      required,
+      name,
+    });
+    return isErrorFind;
+  };
 
   const handelChangeType = useCallback(({ e, patterns, name, required }) => {
     const value = e.target.value;
