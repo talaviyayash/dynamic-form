@@ -7,3 +7,7 @@ export const passwordRegex =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
 export const onlyNumberRegex = /^[0-9]*$/;
+
+export const mobileNumberRegex = /^\d{10}$/;
+
+export const ageRegex = /^\S[0-9]{0,2}$/;

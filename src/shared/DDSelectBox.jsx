@@ -1,5 +1,5 @@
 import React, { Fragment, memo } from "react";
-import { emptyString } from "../description/globel.description";
+import { emptyString } from "../description/global.description";
 
 const SelectBox = ({ element, value, handelChange, required }) => {
   const {

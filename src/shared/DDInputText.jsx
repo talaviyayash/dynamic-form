@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { emptyString } from "../description/globel.description";
+import { emptyString } from "../description/global.description";
 
 const InputText = ({ element, value, handelChange }) => {
   const { name, patterns, required, attributes } = element;

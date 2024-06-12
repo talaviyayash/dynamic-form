@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { emptyString } from "../description/globel.description";
+import { emptyString } from "../description/global.description";
 
 const DDFormContainer = ({ configArray }) => {
   const [state, setState] = useState({});
@@ -42,14 +42,18 @@ const DDFormContainer = ({ configArray }) => {
     return isErrorFind;
   };
 
-  const handelChangeType = useCallback(({ e, patterns, name, required }) => {
-    const value = e.target.value;
-    setState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    singleErrorFind({ value: value.trim(), patterns, required, name });
-  }, []);
+  const handelChangeType = useCallback(
+    ({ e, patterns, name, required }) => {
+      const value = e.target.value;
+      setState((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+      console.log("value", value);
+      singleErrorFind({ value: value.trim(), patterns, required, name });
+    },
+    [singleErrorFind]
+  );
 
   const handelChangeCheckBox = useCallback(({ e, name, required }) => {
     const isChecked = e.target.checked;

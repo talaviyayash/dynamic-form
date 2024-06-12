@@ -4,7 +4,7 @@ import RadioBtn from "../DDRadioBtn";
 import InputText from "../DDInputText";
 import SelectBox from "../DDSelectBox";
 import DDTextArea from "../DDTextArea";
-import { emptyString } from "../../description/globel.description";
+import { emptyString } from "../../description/global.description";
 
 const FormDynamic = ({ element, value, handelChange }) => {
   const { type = emptyString, attributes = {}, name, required } = element;

@@ -18,7 +18,6 @@ const DDForm = ({
         const { isRequired } = required;
         return (
           <Fragment key={index}>
-            {console.log("type", type)}
             <DDLabel label={label} isRequired={isRequired} />
             <div>
               <FormDynamic
