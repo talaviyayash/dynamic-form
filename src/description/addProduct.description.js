@@ -12,7 +12,6 @@ export const addProductArray = [
       type: "text",
       name: "soldBy",
       id: "soldBy",
-      className: "input-text",
     },
     label: {
       innerText: "Sold By",
@@ -38,7 +37,6 @@ export const addProductArray = [
       type: "text",
       name: "customerId",
       id: "customerId",
-      className: "input-text",
     },
     label: {
       innerText: "Customer Id",
@@ -64,7 +62,6 @@ export const addProductArray = [
       type: "text",
       name: "productId",
       id: "productId",
-      className: "input-text",
     },
     label: {
       innerText: "Product Id",
@@ -90,7 +87,6 @@ export const addProductArray = [
       type: "date",
       name: "dateSold",
       id: "dateSold",
-      className: "input-text",
     },
     label: {
       innerText: "Date Sold",
@@ -109,7 +105,6 @@ export const addProductArray = [
     attributes: {
       name: "paymentType",
       id: "paymentType",
-      className: "input-text",
     },
     label: {
       innerText: "Payment Type",
@@ -143,7 +138,6 @@ export const addProductArray = [
       type: "date",
       name: "paidDate",
       id: "paidDate",
-      className: "input-text",
     },
     label: {
       innerText: "Paid Date",
@@ -163,7 +157,7 @@ export const addProductArray = [
       type: "textarea",
       name: "notes",
       id: "notes",
-      className: "input-text",
+
       rows: 3,
       cols: 36,
     },
@@ -185,7 +179,6 @@ export const addProductArray = [
       type: "text",
       name: "amountPaid",
       id: "amountPaid",
-      className: "input-text",
     },
     label: {
       innerText: "Amount Paid",

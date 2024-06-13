@@ -6,18 +6,20 @@ const RadioBtn = ({ element, handelChange, required }) => {
 
   return (
     <>
-      {children?.map(({ attributes = {}, label = {} }, index) => {
-        return (
-          <div key={index}>
-            <input
-              type="radio"
-              {...attributes}
-              onChange={(e) => handelChange({ e, patterns, name, required })}
-            />
-            <DDLabel label={label} />
-          </div>
-        );
-      })}
+      <div>
+        {children?.map(({ attributes = {}, label = {} }, index) => {
+          return (
+            <div key={index}>
+              <input
+                type="radio"
+                {...attributes}
+                onChange={(e) => handelChange({ e, patterns, name, required })}
+              />
+              <DDLabel label={label} />
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };

@@ -14,6 +14,7 @@ const SelectBox = ({ element, value, handelChange, required }) => {
       <select
         type={type}
         {...attributes}
+        style={{ height: "30px", borderRadius: "5px", padding: "5px" }}
         value={value}
         onChange={(e) => handelChange({ e, patterns, name, required })}
       >

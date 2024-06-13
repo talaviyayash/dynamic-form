@@ -1,11 +1,6 @@
-import {
-  ageRegex,
-  emailRegex,
-  mobileNumberRegex,
-  nameRegex,
-} from "../utils/regex";
+import { emailRegex, nameRegex } from "../utils/regex";
 
-export const userInfoForm = [
+export const registerForm = [
   {
     name: "fname",
     type: "text",
@@ -21,7 +16,7 @@ export const userInfoForm = [
       placeholder: "First Name",
     },
     wrapElementStyle: {
-      gridColumn: "3/7",
+      gridColumn: "4/7",
     },
     label: {
       innerText: "First Name",
@@ -32,7 +27,7 @@ export const userInfoForm = [
       {
         regex: nameRegex,
         error:
-          "First Name only contain alphabets and spaces and minimum length is   .",
+          "First Name only contain alphabets and spaces and minimum length is 2.",
       },
     ],
   },
@@ -51,7 +46,7 @@ export const userInfoForm = [
       placeholder: "Last Name",
     },
     wrapElementStyle: {
-      gridColumn: "7/11",
+      gridColumn: "7/10",
     },
     label: {
       innerText: "Last Name",
@@ -81,7 +76,7 @@ export const userInfoForm = [
       placeholder: "Email",
     },
     wrapElementStyle: {
-      gridColumn: "3/7",
+      gridColumn: "4/ 10",
     },
     label: {
       innerText: "Email",
@@ -96,84 +91,33 @@ export const userInfoForm = [
     ],
   },
   {
-    name: "mobileNo",
+    name: "password",
     type: "text",
     required: {
       isRequired: true,
-      defaultMsg: "Please enter valid Mobile No.",
+      defaultMsg: "Please enter Password.",
     },
     attributes: {
-      type: "text",
-      name: "mobileNo",
-      id: "mobileNo",
+      type: "password",
+      name: "password",
+      id: "password",
 
-      placeholder: " Mobile No.",
+      placeholder: "Password",
     },
     wrapElementStyle: {
-      gridColumn: "7/11",
+      gridColumn: "4/ 10",
     },
     label: {
-      innerText: "Mobile No.",
+      innerText: "Password",
       className: "font",
-      htmlFor: "mobileNo",
+      htmlFor: "password",
     },
     patterns: [
       {
-        regex: mobileNumberRegex,
-        error: "Mobile No only contain numbers and length of number is 10.",
+        regex: nameRegex,
+        error:
+          "Last Name only contain alphabets and spaces and minimum length is 2.",
       },
     ],
   },
-  {
-    name: "age",
-    type: "text",
-    required: {
-      isRequired: false,
-      defaultMsg: "Please enter valid Age.",
-    },
-    attributes: {
-      type: "text",
-      name: "age",
-      id: "age",
-
-      placeholder: "Your Age.",
-    },
-    wrapElementStyle: {
-      gridColumn: "5/9",
-    },
-    label: {
-      innerText: "Age",
-      className: "font",
-      htmlFor: "age",
-    },
-    patterns: [
-      {
-        regex: ageRegex,
-        error: "Age only contain numbers between 0 to 999.",
-      },
-    ],
-  },
-  // {
-  //   name: "dob",
-  //   type: "text",
-  //   required: {
-  //     isRequired: true,
-  //     defaultMsg: "Please enter valid Age date.",
-  //   },
-  //   attributes: {
-  //     type: "date",
-  //     name: "dob",
-  //     id: "dob",
-
-  //     max: new Date().toISOString().slice(0, 10),
-  //   },
-  //   wrapElementStyle: {
-  //     gridColumn: "7/11",
-  //   },
-  //   label: {
-  //     innerText: "DOB",
-  //     className: "font",
-  //     htmlFor: "dob",
-  //   },
-  // },
 ];

@@ -12,30 +12,35 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
       const { isRequired, defaultMsg } = required;
 
       let { error: errorMsg } =
-        patterns?.find(({ regex }) => {
-          const isValid = value.match(regex);
+        patterns?.find(({ regex = "" }) => {
+          const isValid = value?.match(regex);
           return !isValid;
         }) ?? {};
 
       const customValidationFunction = allValidationFunction?.[name];
 
       if (customValidationFunction && !errorMsg) {
-        errorMsg = customValidationFunction();
+        setState((prev) => {
+          errorMsg = customValidationFunction(prev);
+          return prev;
+        });
       }
+      let isAnyErrorMsg;
 
-      const isAnyErrorMsg = isRequired
-        ? errorMsg ||
-          (lengthOfValueIsZero
-            ? defaultMsg || `Please fill ${name} field properly`
-            : emptyString)
-        : lengthOfValueIsZero
-        ? emptyString
-        : errorMsg || emptyString;
-
-      setError((prev) => ({
-        ...prev,
-        [name]: isAnyErrorMsg,
-      }));
+      setError((prev) => {
+        isAnyErrorMsg = isRequired
+          ? errorMsg ||
+            (lengthOfValueIsZero
+              ? defaultMsg || `Please fill ${name} field properly`
+              : emptyString)
+          : lengthOfValueIsZero
+          ? emptyString
+          : errorMsg || emptyString;
+        return {
+          ...prev,
+          [name]: isAnyErrorMsg,
+        };
+      });
 
       return Boolean(isAnyErrorMsg);
     },

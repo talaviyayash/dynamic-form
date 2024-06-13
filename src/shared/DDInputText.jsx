@@ -7,6 +7,11 @@ const InputText = ({ element, value, handelChange }) => {
     <>
       <input
         {...attributes}
+        className={
+          attributes.type === "file"
+            ? ""
+            : `input-text ${attributes?.className}`
+        }
         value={value ?? emptyString}
         onChange={(e) => handelChange({ e, patterns, name, required })}
       />

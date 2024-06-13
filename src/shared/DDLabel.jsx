@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 
-const DDLabel = ({ label, required }) => {
+const DDLabel = ({ label, required = {} }) => {
   const { isRequired } = required;
   const { innerText, ...attribute } = label;
   return (

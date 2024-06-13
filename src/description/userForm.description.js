@@ -17,7 +17,7 @@ export const configArray = [
       type: "text",
       name: "name",
       id: "name",
-      className: "input-text",
+
       placeholder: "Enter name",
     },
     label: {
@@ -48,7 +48,7 @@ export const configArray = [
       type: "email",
       name: "email",
       id: "email",
-      className: "input-text",
+
       placeholder: "Enter email",
     },
     label: {
@@ -79,7 +79,7 @@ export const configArray = [
       name: "password",
       type: "password",
       id: "password",
-      className: "input-text",
+
       placeholder: "Enter password",
     },
     label: {
