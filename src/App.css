@@ -1,36 +1,157 @@
-.container {
-  display: flex;
+* {
+  box-sizing: border-box;
+  word-spacing: 3px;
+  letter-spacing: 1.9px;
+}
+.DDFcontainer {
+  display: gird;
+  grid-template-columns: repeat(12, 1fr);
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  padding: 50px 0;
+  justify-self: center;
+  align-self: center;
+  align-content: center;
+  justify-items: center;
+  column-gap: 10px;
 }
 
-.gender div {
-  display: flex;
+.grid {
+  display: grid;
 }
 
 .error {
+  width: 100%;
   color: red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2px;
-  height: 0px;
   font-size: 12px;
+  min-height: 20px;
+}
+label {
+  display: inline;
+  font-size: 15px;
 }
 
-.font {
-  margin-right: 10px;
+.input-text {
+  height: 30px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 40px;
 }
 
-.hobby div {
+.required {
+  font-size: 15px;
+  color: red;
+}
+
+.submit {
+  grid-column: 4/6;
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  margin-bottom: 35px;
 }
 
-.flex {
+.center {
+  grid-column: 1/9;
+  text-align: center;
+}
+
+.dob-form {
+  grid-column: 1/5;
+}
+
+.input-text {
+  border-radius: 8px 21px;
+  padding: 7px 20px;
+  font-size: 15px;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: white;
+  max-width: 400px;
+}
+.style-form {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-top: 150px;
+  border-radius: 20px;
+  background-color: #e1dfdf;
+}
+
+.wrapper {
   display: flex;
-  gap: 7px;
+  justify-content: center;
+  align-items: center;
+}
+
+.DDFWrappingInput {
+  display: flex;
+  flex-direction: column;
+  /* width: 300px; */
+  width: 100%;
+  height: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.submit button {
+  border: 0;
+  color: white;
+  background-color: black;
+  font-size: 15px;
+  border-radius: 7px;
+  padding: 10px;
+}
+.DDFWrappingInput div {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 870px) {
+  .DDFcontainer {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+  .DDFWrappingInput {
+    width: 60%;
+  }
+  .style-form {
+    width: auto !important;
+    margin: 10px 50px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .DDFWrappingInput {
+    width: 60%;
+    height: 80px;
+  }
+  .style-form {
+    width: 400px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+  .error {
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    min-height: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .DDFWrappingInput {
+    width: 60%;
+    height: 80px;
+  }
+  .error {
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    min-height: 12px;
+  }
+  h1 {
+    font-size: 20px;
+  }
 }

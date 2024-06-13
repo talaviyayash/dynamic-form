@@ -1,28 +1,25 @@
 import React, { Fragment, memo } from "react";
-import DDFormContainer from "../../dynamic-form/container/DDForm.container";
 import FormDynamic from "./DDFormSwitch";
-import { checkBox } from "../../description/form";
 import DDLabel from "../DDLabel";
 import DDError from "../DDError";
+import { checkBox } from "../../description/ddform.description";
 
-const DDForm = ({ configArray }) => {
-  const {
-    handelChangeType,
-    state,
-    validateAllField,
-    error,
-    handelChangeCheckBox,
-  } = DDFormContainer({
-    configArray,
-  });
+const DDForm = ({
+  configArray,
+  handelChangeType,
+  state,
+  error,
+  handelChangeCheckBox,
+}) => {
   return (
-    <div className="container">
+    <>
       {configArray.map((element, index) => {
         const { type, name, label, required } = element;
+        const { isRequired } = required;
         return (
           <Fragment key={index}>
-            <div className="flex">
-              <DDLabel label={label} required={required} />
+            <DDLabel label={label} isRequired={isRequired} />
+            <div>
               <FormDynamic
                 value={state?.[name]}
                 handelChange={
@@ -30,13 +27,12 @@ const DDForm = ({ configArray }) => {
                 }
                 element={element}
               />
+              <DDError error={error?.[name]} />
             </div>
-            <DDError error={error?.[name]} />
           </Fragment>
         );
       })}
-      <button onClick={validateAllField}>validate</button>
-    </div>
+    </>
   );
 };
 

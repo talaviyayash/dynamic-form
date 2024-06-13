@@ -3,18 +3,21 @@ import {
   emptyRegex,
   nameRegex,
   passwordRegex,
-} from "../dynamic-form/utils/regex";
+} from "../utils/regex";
 
 export const configArray = [
   {
     name: "name",
     type: "text",
-    required: true,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     attributes: {
       type: "text",
       name: "name",
       id: "name",
-      className: "input-text",
+
       placeholder: "Enter name",
     },
     label: {
@@ -23,25 +26,29 @@ export const configArray = [
       htmlFor: "name",
     },
     patterns: [
-      {
-        regex: emptyRegex,
-        error: "Name can't be empty",
-      },
+      // {
+      //   regex: emptyRegex,
+      //   error: "Name can't be empty",
+      // },
       {
         regex: nameRegex,
         error: "Please enter a valid name",
       },
     ],
   },
+
   {
     name: "email",
     type: "text",
-    required: true,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     attributes: {
       type: "email",
       name: "email",
       id: "email",
-      className: "input-text",
+
       placeholder: "Enter email",
     },
     label: {
@@ -60,15 +67,19 @@ export const configArray = [
       },
     ],
   },
+
   {
     name: "password",
     type: "text",
-    required: false,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     attributes: {
       name: "password",
       type: "password",
       id: "password",
-      className: "input-text",
+
       placeholder: "Enter password",
     },
     label: {
@@ -83,10 +94,14 @@ export const configArray = [
       },
     ],
   },
+
   {
     name: "gender",
     type: "radio",
-    // required: true,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     label: {
       innerText: "Gender :-",
     },
@@ -123,10 +138,14 @@ export const configArray = [
       },
     ],
   },
+
   {
     name: "hobby",
     type: "checkbox",
-    required: true,
+    required: {
+      isRequired: false,
+      defaultMsg: "Please select at least one hobby",
+    },
     children: [
       {
         attributes: {
@@ -170,10 +189,14 @@ export const configArray = [
       className: "font",
     },
   },
+
   {
     name: "country",
     type: "select",
-    required: true,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     attributes: {
       className: "select-box",
       name: "country",
@@ -205,10 +228,14 @@ export const configArray = [
       },
     ],
   },
+
   {
     name: "state",
     type: "select",
-    required: true,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     attributes: {
       className: "select-box",
       name: "state",
@@ -240,10 +267,14 @@ export const configArray = [
       htmlFor: "state",
     },
   },
+
   {
     name: "city",
     type: "select",
-    required: true,
+    required: {
+      isRequired: true,
+      defaultMsg: "Please enter name",
+    },
     attributes: {
       className: "select-box",
       name: "city",
@@ -276,7 +307,3 @@ export const configArray = [
     },
   },
 ];
-
-export const typeConfig = ["text", "select", "radio"];
-
-export const checkBox = "checkbox";
