@@ -17,7 +17,7 @@ const App = () => {
           element: <UserInfo />,
         },
         {
-          path: "/login",
+          path: "/",
           element: <Login />,
         },
         {
