@@ -10,6 +10,7 @@ const DDFormUserInfo = ({
   handelChangeType,
   state,
   error,
+  formName
 }) => {
   return (
     <>

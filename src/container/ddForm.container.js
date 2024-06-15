@@ -1,11 +1,19 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { emptyString } from "../description/global.description";
+import { useDispatch, useSelector } from "react-redux";
+import { addValue, createForm, addError } from "../store/slice/formSlice";
 
-const DDFormContainer = ({ configArray, allValidationFunction }) => {
-  const [state, setState] = useState({});
-
-  const [error, setError] = useState({});
-
+const DDFormContainer = ({ configArray, formName }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(
+      createForm({
+        name: formName,
+      })
+    );
+  }, [dispatch, formName]);
+  const formState = useSelector((state) => state?.form?.form?.[formName]);
+  const { value: valueField = {}, error = {} } = formState ?? {};
   const singleErrorFind = useCallback(
     ({ value, patterns, required, name }) => {
       const lengthOfValueIsZero = value.length === 0;
@@ -17,34 +25,35 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
           return !isValid;
         }) ?? {};
 
-      const customValidationFunction = allValidationFunction?.[name];
+      // const customValidationFunction = allValidationFunction?.[name];
 
-      if (customValidationFunction && !errorMsg) {
-        setState((prev) => {
-          errorMsg = customValidationFunction(prev);
-          return prev;
-        });
-      }
+      // if (customValidationFunction && !errorMsg) {
+      //   setState((prev) => {
+      //     errorMsg = customValidationFunction(prev);
+      //     return prev;
+      //   });
+      // }
       let isAnyErrorMsg;
 
-      setError((prev) => {
-        isAnyErrorMsg = isRequired
-          ? errorMsg ||
-            (lengthOfValueIsZero
-              ? defaultMsg || `Please fill ${name} field properly`
-              : emptyString)
-          : lengthOfValueIsZero
-          ? emptyString
-          : errorMsg || emptyString;
-        return {
-          ...prev,
-          [name]: isAnyErrorMsg,
-        };
-      });
-
+      isAnyErrorMsg = isRequired
+        ? errorMsg ||
+          (lengthOfValueIsZero
+            ? defaultMsg || `Please fill ${name} field properly`
+            : emptyString)
+        : lengthOfValueIsZero
+        ? emptyString
+        : errorMsg || emptyString;
+      dispatch(
+        addError({
+          name: formName,
+          error: {
+            [name]: isAnyErrorMsg,
+          },
+        })
+      );
       return Boolean(isAnyErrorMsg);
     },
-    [allValidationFunction]
+    [dispatch, formName]
   );
 
   const errorFind = ({ name }) => {
@@ -52,7 +61,7 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
 
     const { patterns, required } = ele;
 
-    const value = state[name] ?? emptyString;
+    const value = valueField?.[name] ?? emptyString;
 
     const isErrorFind = singleErrorFind({
       value: value,
@@ -66,11 +75,12 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
   const handelChangeType = useCallback(
     ({ e, patterns, name, required }) => {
       const value = e.target.value;
-      setState((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-
+      dispatch(
+        addValue({
+          name: formName,
+          value: { [name]: value },
+        })
+      );
       singleErrorFind({
         value: value.trim(),
         patterns,
@@ -78,37 +88,40 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
         name,
       });
     },
-    [singleErrorFind]
+    [singleErrorFind, dispatch, formName]
   );
 
-  const handelChangeCheckBox = useCallback(({ e, name, required }) => {
-    const isChecked = e.target.checked;
-    const value = e.target.value;
-    const { isRequired, defaultMsg } = required;
+  const handelChangeCheckBox = useCallback(
+    ({ e, name, required, value }) => {
+      const isChecked = e.target.checked;
+      const { isRequired, defaultMsg } = required;
 
-    setState((prev) => {
-      let filteredArray = prev?.[name] ?? [];
+      let filteredArray = value ?? [];
       if (!isChecked) {
-        filteredArray = prev?.[name]?.filter((val) => !(value === val)) ?? [];
+        filteredArray = value?.filter((val) => !(e.target.value === val)) ?? [];
       } else {
-        filteredArray.push(value);
+        filteredArray.push(e.target.value);
       }
 
-      setError((prev) => ({
-        ...prev,
-        [name]: isChecked
-          ? emptyString
-          : filteredArray.length === 0
-          ? isRequired && (defaultMsg || `Please fill ${name} field properly`)
-          : emptyString,
-      }));
-
-      return {
-        ...prev,
-        [name]: [...filteredArray],
-      };
-    });
-  }, []);
+      dispatch(
+        addValue({
+          value: {
+            name: formName,
+            [name]: [...filteredArray],
+          },
+          error: {
+            [name]: isChecked
+              ? emptyString
+              : filteredArray.length === 0
+              ? isRequired &&
+                (defaultMsg || `Please fill ${name} field properly`)
+              : emptyString,
+          },
+        })
+      );
+    },
+    [dispatch, formName]
+  );
 
   const validateAllField = (e) => {
     e?.preventDefault();
@@ -117,7 +130,7 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
     configArray.forEach((val) => {
       const { name, patterns, required } = val;
 
-      const value = state[name] ?? emptyString;
+      const value = valueField?.[name] ?? emptyString;
 
       const errorFound = singleErrorFind({
         value: value,
@@ -132,7 +145,7 @@ const DDFormContainer = ({ configArray, allValidationFunction }) => {
   };
 
   return {
-    state,
+    state: valueField,
     handelChangeType,
     handelChangeCheckBox,
     validateAllField,

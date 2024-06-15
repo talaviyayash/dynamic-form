@@ -12,6 +12,7 @@ const Login = () => {
     handelChangeCheckBox,
   } = DDFormContainer({
     configArray: loginForm,
+    formName :  "loginForm"
   });
 
   return (

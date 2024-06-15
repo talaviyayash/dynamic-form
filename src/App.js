@@ -6,6 +6,8 @@ import ForgetPassword from "./presentation/user/forget-password/ForgetPassword";
 import Login from "./presentation/user/login/Login";
 import Register from "./presentation/user/register/Register";
 import NavBar from "./shared/Navbar";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -37,7 +39,9 @@ const App = () => {
   ]);
   return (
     <>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </>
   );
 };

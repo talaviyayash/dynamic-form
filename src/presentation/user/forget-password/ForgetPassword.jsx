@@ -28,6 +28,7 @@ const ForgetPassword = () => {
   } = DDFormContainer({
     configArray: forgetPasswordForm,
     allValidationFunction: containerObj,
+    formName :  "forgetPasswordForm"
   });
 
   return (
@@ -37,6 +38,7 @@ const ForgetPassword = () => {
           {/* <form> */}
           <h1 className="center">Change Password</h1>
           <DDFormUserInfo
+          formName= {"forgetPasswordForm"}
             configArray={forgetPasswordForm}
             handelChangeType={handelChangeType}
             state={state}

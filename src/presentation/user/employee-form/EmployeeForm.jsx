@@ -13,6 +13,8 @@ const EmployeeForm = () => {
     handelChangeCheckBox,
   } = DDFormContainer({
     configArray: employeeForm,
+    formName :  "employeeForm",
+
     // allValidationFunction: {
     //   email: ({ email }) => {
     //     console.log(email);

@@ -22,10 +22,10 @@ const FormDynamic = ({ element, value, handelChange }) => {
       return (
         <SelectBox
           element={element}
-          value={value}
           handelChange={handelChange}
+          value={value}
           required={required}
-        />
+          />
       );
     case "checkbox":
       return (
@@ -33,7 +33,8 @@ const FormDynamic = ({ element, value, handelChange }) => {
           element={element}
           handelChange={handelChange}
           required={required}
-        />
+          value={value}
+          />
       );
     case "radio":
       return (

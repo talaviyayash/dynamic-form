@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import DDLabel from "./DDLabel";
 
-const CheckBox = ({ element, handelChange, required }) => {
+const CheckBox = ({ element, handelChange, required , value }) => {
   const { children = [], name, patterns } = element;
   return (
     <>
@@ -11,7 +11,7 @@ const CheckBox = ({ element, handelChange, required }) => {
             <div key={index}>
               <input
                 type="checkbox"
-                onChange={(e) => handelChange({ e, patterns, name, required })}
+                onChange={(e) => handelChange({ e, patterns, name, required , value })}
                 {...attributes}
               />
               <DDLabel label={label} />

@@ -13,6 +13,7 @@ const Register = () => {
     handelChangeCheckBox,
   } = DDFormContainer({
     configArray: registerForm,
+    formName :  "register"
   });
 
   return (
