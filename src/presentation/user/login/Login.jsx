@@ -3,6 +3,7 @@ import DDFormUserInfo from "../../../shared/DDForm/DDFormUserInfo";
 import DDFormContainer from "../../../container/ddForm.container";
 import { loginForm } from "../../../description/login.description";
 import "./login.css";
+import { Outlet } from "react-router-dom";
 const Login = () => {
   const {
     handelChangeType,

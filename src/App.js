@@ -21,6 +21,12 @@ const App = () => {
         {
           path: "/",
           element: <Login />,
+          children: [
+            {
+              path: "/login",
+              element: <></>,
+            },
+          ],
         },
         {
           path: "/forget-password",

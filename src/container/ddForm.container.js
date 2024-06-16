@@ -1,7 +1,12 @@
 import { useCallback, useEffect } from "react";
 import { emptyString } from "../description/global.description";
 import { useDispatch, useSelector } from "react-redux";
-import { addValue, createForm, addError } from "../store/slice/formSlice";
+import {
+  addValue,
+  createForm,
+  addError,
+  clearForm,
+} from "../store/slice/formSlice";
 
 const DDFormContainer = ({ configArray, formName }) => {
   const dispatch = useDispatch();
@@ -11,6 +16,7 @@ const DDFormContainer = ({ configArray, formName }) => {
         name: formName,
       })
     );
+    return () => dispatch(clearForm({ name: formName }));
   }, [dispatch, formName]);
   const formState = useSelector((state) => state?.form?.form?.[formName]);
   const { value: valueField = {}, error = {} } = formState ?? {};
