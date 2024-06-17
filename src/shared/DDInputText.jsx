@@ -14,7 +14,7 @@ const InputText = ({ element, value, handelChange }) => {
         }
         value={value ?? emptyString}
         onChange={(e) => handelChange({ e, patterns, name, required })}
-        autocomplete="off"
+        autoComplete="off"
       />
     </>
   );

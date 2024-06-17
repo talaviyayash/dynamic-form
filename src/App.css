@@ -13,6 +13,7 @@
   align-content: center;
   justify-items: center;
   column-gap: 10px;
+  row-gap: 10px;
 }
 
 .grid {
@@ -73,12 +74,12 @@ label {
   justify-content: center;
   align-items: center;
   border: 2px solid black;
-  margin-top: 150px;
   border-radius: 20px;
   background-color: #e1dfdf;
 }
 
 .wrapper {
+  height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
